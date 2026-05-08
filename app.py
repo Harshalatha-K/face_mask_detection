@@ -1,7 +1,7 @@
 
 
 import streamlit as st
-import tensorflow as tf
+from tflite_runtime.interpreter import Interpreter
 import numpy as np
 import cv2
 from PIL import Image
@@ -11,7 +11,7 @@ with open("labels.txt", "r") as f:
     labels = [line.strip() for line in f.readlines()]
 
 # Load TFLite model
-interpreter = tf.lite.Interpreter(model_path="model.tflite")
+interpreter = Interpreter(model_path="model.tflite")
 
 interpreter.allocate_tensors()
 
